@@ -14,6 +14,10 @@ config/name="BAD IDEAS"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BM="*uid://cvuiyw5ivjg3f"
+
 [display]
 
 window/size/viewport_width=1920

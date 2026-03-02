@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3p6x4ssjqngk"]
+
+[ext_resource type="Script" uid="uid://w5yxeoa6go4v" path="res://scripts/healthbox.gd" id="1_547a3"]
+
+[node name="HEALTHBOX" type="Area2D" unique_id=1249987936]
+script = ExtResource("1_547a3")
