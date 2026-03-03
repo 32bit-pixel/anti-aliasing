@@ -10,7 +10,10 @@ func _ready() -> void:
 	health = max_health
 
 func damage(attack: Attack):
-	health -= attack.damage
+	if BM.on_beat():
+		health -= attack.damage * 2
+	else:
+		health -= attack.damage
 	
 	if health <= 0:
 		if parent.has_method("death"):
