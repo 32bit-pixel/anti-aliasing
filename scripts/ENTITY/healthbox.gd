@@ -9,11 +9,13 @@ var health: int = 0
 func _ready() -> void:
 	health = max_health
 
-func damage(attack: Attack):
+func damage(attack: Attack, pos: Vector2):
 	if BM.on_beat():
 		health -= attack.damage * 2
+		print("Big Owie")
 	else:
 		health -= attack.damage
+		print("Owie")
 	
 	if health <= 0:
 		if parent.has_method("death"):

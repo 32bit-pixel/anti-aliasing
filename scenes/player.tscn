@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cfitcx6lvymlx"]
+
+[ext_resource type="PackedScene" uid="uid://c3p6x4ssjqngk" path="res://scenes/healthbox.tscn" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://b0xfmt74aadmo" path="res://scripts/ENTITY/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://cv6onjm1fkaic" path="res://scenes/attackbox.tscn" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://bm2g7dygt12bb" path="res://Resources/Attack.gd" id="4_qlg0r"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sh265"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(64, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(48, 32)
+
+[sub_resource type="Resource" id="Resource_tuyoq"]
+script = ExtResource("4_qlg0r")
+damage = 25
+metadata/_custom_type_script = "uid://bm2g7dygt12bb"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
+size = Vector2(73, 68)
+
+[node name="player" type="CharacterBody2D" unique_id=246408369]
+collision_mask = 8
+script = ExtResource("1_g2els")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=490814886]
+mesh = SubResource("QuadMesh_sh265")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254187171]
+shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="HEALTHBOX" parent="." unique_id=1249987936 instance=ExtResource("1_3vyb7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HEALTHBOX" unique_id=1027709089]
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="ATTACKBOX" parent="." unique_id=966908024 instance=ExtResource("3_dqkch")]
+attack = SubResource("Resource_tuyoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ATTACKBOX" unique_id=1163355470]
+position = Vector2(69, 0)
+shape = SubResource("RectangleShape2D_fjrip")

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bvh0gpj54wfyc"]
+
+[ext_resource type="PackedScene" uid="uid://cfitcx6lvymlx" path="res://scenes/player.tscn" id="2_epypp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0hol4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(1936, 114)
+
+[node name="Node2D" type="Node2D" unique_id=377944167]
+
+[node name="player" parent="." unique_id=246408369 instance=ExtResource("2_epypp")]
+position = Vector2(4, 46)
+ai = true
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=1251393524]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1617584264]
+collision_layer = 8
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=1023894430]
+position = Vector2(-1.5000305, 320.5)
+scale = Vector2(1929, 116.99999)
+mesh = SubResource("QuadMesh_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1627080925]
+position = Vector2(-3, 319)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="player2" parent="." unique_id=1586545429 instance=ExtResource("2_epypp")]
