@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cfitcx6lvymlx"]
+[gd_scene format=3 uid="uid://b3f4p06y7bwth"]
 
 [ext_resource type="PackedScene" uid="uid://c3p6x4ssjqngk" path="res://scenes/healthbox.tscn" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b0xfmt74aadmo" path="res://scripts/ENTITY/player.gd" id="1_g2els"]
@@ -17,10 +17,14 @@ size = Vector2(48, 32)
 [sub_resource type="Resource" id="Resource_tuyoq"]
 script = ExtResource("4_qlg0r")
 damage = 25
+knockback_coeff = 500
 metadata/_custom_type_script = "uid://bm2g7dygt12bb"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
-size = Vector2(73, 68)
+size = Vector2(65.5, 52.305)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dqkch"]
+size = Vector2(20.48, 24.585)
 
 [node name="player" type="CharacterBody2D" unique_id=246408369]
 collision_mask = 8
@@ -41,5 +45,10 @@ shape = SubResource("RectangleShape2D_g2els")
 attack = SubResource("Resource_tuyoq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ATTACKBOX" unique_id=1163355470]
-position = Vector2(69, 0)
+position = Vector2(65.25, 0)
 shape = SubResource("RectangleShape2D_fjrip")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ATTACKBOX" unique_id=1120092927]
+position = Vector2(65, 1)
+scale = Vector2(1.8339844, 1.679581)
+mesh = SubResource("QuadMesh_dqkch")

@@ -2,24 +2,37 @@ extends CharacterBody2D
 
 @export var ai: bool = false
 
-const SPEED = 300.0
+const accel = 4000.0
 const JUMP_VELOCITY = -600.0
 
 var direction: float
+
+func _ready() -> void:
+	BM.set_bpm(100)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += 980 * delta
 
-	if ai:
+	if !ai:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 
 		direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
+
+		if Input.is_action_just_pressed("attack"):
+			$ATTACKBOX.attack_start()
+	if is_on_floor():
+		if direction:
+			velocity.x += direction * accel * delta
+		velocity.x = lerp(velocity.x, 0.0, clamp(10.0*delta, 0, 1))
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if direction:
+			velocity.x += direction * accel/5 * delta
+			velocity.x = lerp(velocity.x, 0.0, clamp(2.0*delta, 0, 1))
+
+	if velocity.x != 0:
+		$ATTACKBOX.attack_dir = clamp(velocity.x, -1, 1)
 
 	move_and_slide()
 
