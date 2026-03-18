@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		visible = false
 		monitoring = false
 
-	if !attacking:
+	if !attacking and attack_dir != 0:
 		scale.x = attack_dir
 		scale.y = attack_dir
 

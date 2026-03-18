@@ -2,11 +2,64 @@
 
 [ext_resource type="PackedScene" uid="uid://c3p6x4ssjqngk" path="res://scenes/healthbox.tscn" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://b0xfmt74aadmo" path="res://scripts/ENTITY/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://y5d8hn3sogp5" path="res://assets/sprites/MCPostaboy.kickleft.png" id="2_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://cv6onjm1fkaic" path="res://scenes/attackbox.tscn" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://bm2g7dygt12bb" path="res://Resources/Attack.gd" id="4_qlg0r"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_sh265"]
-size = Vector2(64, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("2_qlg0r")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3v2ag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}],
+"loop": true,
+"name": &"kick",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(64, 128)
@@ -30,8 +83,13 @@ size = Vector2(20.48, 24.585)
 collision_mask = 8
 script = ExtResource("1_g2els")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=490814886]
-mesh = SubResource("QuadMesh_sh265")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=784742388]
+texture_filter = 1
+position = Vector2(-7, 7)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3v2ag")
+animation = &"kick"
+autoplay = "kick"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254187171]
 shape = SubResource("RectangleShape2D_4flbx")

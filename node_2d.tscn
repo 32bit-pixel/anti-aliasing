@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://r7nc24852r5v"]
 
+[ext_resource type="Script" uid="uid://dq0xhiw4lkx4d" path="res://node_2d.gd" id="1_epypp"]
+[ext_resource type="AudioStream" uid="uid://b0ws2q7yfwefb" path="res://assets/songs/Metronome 120 BPM - QuickSounds.com.mp3" id="2_0e48y"]
 [ext_resource type="PackedScene" uid="uid://b3f4p06y7bwth" path="res://scenes/player.tscn" id="2_epypp"]
+[ext_resource type="Script" uid="uid://bttm6qrgquxrq" path="res://canvas.gd" id="4_0hol4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0hol4"]
 
@@ -8,6 +11,7 @@
 size = Vector2(1936, 114)
 
 [node name="Node2D" type="Node2D" unique_id=377944167]
+script = ExtResource("1_epypp")
 
 [node name="player" parent="." unique_id=246408369 instance=ExtResource("2_epypp")]
 position = Vector2(4, 46)
@@ -28,3 +32,37 @@ shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="player2" parent="." unique_id=1586545429 instance=ExtResource("2_epypp")]
 ai = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1055237516]
+stream = ExtResource("2_0e48y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1936399466]
+script = ExtResource("4_0hol4")
+
+[node name="Debug" type="Control" parent="CanvasLayer" unique_id=1372884686]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Debug" unique_id=203739691]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Debug/VBoxContainer" unique_id=1154084408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "IF RED: NOT ON BEAT
+IF GREEN: ON BEAT"
+
+[node name="SAFE" type="LineEdit" parent="CanvasLayer/Debug/VBoxContainer" unique_id=588918473]
+layout_mode = 2
+placeholder_text = "Beat Safe"
+
+[node name="Beat" type="ColorRect" parent="CanvasLayer/Debug/VBoxContainer" unique_id=628224343]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+color = Color(1, 0, 0, 1)

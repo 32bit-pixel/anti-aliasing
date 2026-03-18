@@ -13,6 +13,7 @@ func set_bpm(value: int) -> void:
 		ms_per_beat = 60000.0 / bpm
 	else:
 		ms_per_beat = 0.0
+	restart_beat()
 
 func restart_beat() -> void:
 	timer_ms = 0.0
